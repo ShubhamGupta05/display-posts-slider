@@ -1,3 +1,5 @@
+<?php
+
 /**
  * Plugin Name:       Custom Shortcode
  * Plugin URI:        https://lazlo.in/plugins/Custom Shortcode/
@@ -30,3 +32,4 @@ $latest_post = new WP_Query( $args );
 print_r( $latest_post);
 
 }
+?>

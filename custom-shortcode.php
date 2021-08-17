@@ -13,3 +13,5 @@
  * Text Domain:       my-first-plugin
  * Domain Path:       /languages
  */
+
+add_shortcode('custom_shortcode','custom_shortcode_get_posts');

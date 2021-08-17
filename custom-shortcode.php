@@ -20,13 +20,12 @@ add_shortcode('custom_shortcode','custom_shortcode_get_posts');
 function custom_shortcode_get_posts(){
 
 $args = array (
-
 'post_status' => 'publish',
 'post_per_page' => 5,
 'orderby' => 'post_date',
-'order' => 'DESC');
+'order' => 'DESC',);
 
-$latest_post = new WP_Query( $args);
+$latest_post = new WP_Query( $args );
 
 print_r( $latest_post);
 

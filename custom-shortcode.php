@@ -29,8 +29,11 @@ function custom_shortcode_get_posts() {
 		'order'         => 'DESC',
 	);
 
-	$latest_post = new WP_Query( $args );
+	$oldest_posts_query = new WP_Query( $args );
 
-	print_r( $latest_post );
-
+	print_r( $oldest_posts_query );
+	
+	foreach( $oldest_posts_query->posts as $old_post ) {
+		include 'templates/custom-shortcode.php';
+	}
 }

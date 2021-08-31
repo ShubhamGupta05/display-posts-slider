@@ -12,4 +12,4 @@
 ?>
 
 <h2><?php echo $old_post->post_title; ?></h2>
-<p><?php the_excerpt(); ?></p>
+<p><?php echo the_excerpt(); ?></p>

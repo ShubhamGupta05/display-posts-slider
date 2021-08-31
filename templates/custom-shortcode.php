@@ -12,4 +12,5 @@
 ?>
 
 <h2><?php echo $old_post->post_title; ?></h2>
-<p><?php echo  $old_post->post_excerpt; ?></p>
+<p><?php echo $old_post->post_excerpt; ?></p>
+<img><?php echo get_the_post_thumbnail( $old_post, medium ); ?></img>

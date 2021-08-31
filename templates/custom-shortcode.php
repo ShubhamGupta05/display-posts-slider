@@ -11,4 +11,4 @@
 
 ?>
 
-<h2><?php echo '$old_post->post_title'; ?></h2>
+<h2><?php echo $old_post->post_title; ?></h2>

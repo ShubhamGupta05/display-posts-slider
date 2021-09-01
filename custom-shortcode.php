@@ -31,7 +31,7 @@ function custom_shortcode_get_posts() {
 
 	$oldest_posts_query = new WP_Query( $args );
 
-	print_r( $oldest_posts_query->the_posts() );
+	print_r( $oldest_posts_query->posts );
 
 	foreach ( $oldest_posts_query->posts as $old_post ) {
 		include 'templates/custom-shortcode.php';

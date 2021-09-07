@@ -20,14 +20,14 @@
 add_shortcode( 'custom_shortcode', 'custom_shortcode_get_posts' );
 
 /** 
-
-Function to get 5 oldest post.
-
-In this function, static arugments are passed.
-On the basis of those arguments It creates a new query object.
-Check the array of the post by prinitng the query object posts property.
-Runs loop to show the each post from the aaray in a proper template.
-
+*
+*Function to get 5 oldest post.
+*
+*In this function, static arugments are passed.
+*On the basis of those arguments It creates a new query object.
+*Check the array of the post by prinitng the query object posts property.
+*Runs loop to show the each post from the aaray in a proper template.
+*
 */
 function custom_shortcode_get_posts() {
 	

@@ -34,7 +34,7 @@ function custom_shortcode_get_posts() {
 	// declaring a $args variable and assigning the static values to the properties. 
 	$args = array(
 		'post_status'   => 'publish',
-		'post_per_page' => 5,
+		'posts_per_page' => 5,
 		'orderby'       => 'post_date',
 		'order'         => 'DESC',
 	);

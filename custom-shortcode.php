@@ -69,6 +69,6 @@ function custom_style() {
 
 	wp_enqueue_style(
 		'style',
-		plugin_dir_url( __FILE__ ) . 'assets/css/style.css'
+		plugin_dir_url( __FILE__ ) . '/assets/css/style.css'
 	);
 }

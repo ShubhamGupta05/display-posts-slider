@@ -25,6 +25,9 @@
 // adds the custom shortcode.
 add_shortcode( 'custom_shortcode', 'custom_shortcode_get_posts' );
 
+// adds the stylesheet.
+add_action( 'wp_enqueue_style', 'custom_style' );
+
 /**
  * Fetches the oldest 5 posts.
  *
@@ -54,4 +57,18 @@ function custom_shortcode_get_posts() {
 		 */
 		include 'templates/custom-shortcode.php';
 	}
+}
+
+
+/**
+ * Adds the style.css file
+ *
+ * @since 1.0.0
+ */
+function custom_style() {
+
+	wp_enqueue_style(
+		'style',
+		plugin_dir_url( __FILE__ ) . 'assets/css/style.css'
+	);
 }

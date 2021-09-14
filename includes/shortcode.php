@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
 add_shortcode( 'custom_shortcode', 'custom_shortcode_get_posts' );
 
 // adds the custom stylesheet.
-add_action( 'wp_enqueue_scripts', 'custom_style' );
+add_action( 'wp_enqueue_scripts', 'enqueue_style' );
 
 /**
  * Fetches the oldest 5 posts.
@@ -67,7 +67,7 @@ function custom_shortcode_get_posts() {
  *
  * @since 1.0.0
  */
-function custom_style() {
+function enqueue_style() {
 
 	// passing parameters to  wp_enqueue_style function.
 	wp_enqueue_style(

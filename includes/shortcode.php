@@ -72,7 +72,7 @@ function enqueue_style() {
 	// passing parameters to  wp_enqueue_style function.
 	wp_enqueue_style(
 		'style',
-		plugin_dir_url( __FILE__ ) . '/assets/css/style.css',
+		CS_URL . '/assets/css/style.css',
 		array(),
 		1,
 		'all'

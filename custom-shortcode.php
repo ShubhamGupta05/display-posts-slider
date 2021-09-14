@@ -22,6 +22,8 @@
  * Domain Path:       /languages
  */
 
+defined( 'ABSPATH' ) || exit;
+
 // adds the custom shortcode.
 add_shortcode( 'custom_shortcode', 'custom_shortcode_get_posts' );
 

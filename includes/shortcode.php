@@ -57,7 +57,7 @@ function custom_shortcode_get_posts() {
 		 *
 		 * @since 1.0.0
 		 */
-		include 'templates/custom-shortcode.php';
+		include CS_PATH . '/templates/custom-shortcode.php';
 	}
 }
 

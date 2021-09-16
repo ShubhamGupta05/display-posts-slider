@@ -70,7 +70,7 @@ function custom_shortcode_get_posts() {
 function enqueue_style() {
 
 	// passing parameters to  wp_enqueue_style function.
-	wp_enqueue_style(
+	wp_register_style(
 		'style',
 		CS_URL . '/assets/css/style.css',
 		array(),

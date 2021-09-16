@@ -1,3 +1,16 @@
 body{
     background-color: red;
 }
+
+h2 {
+    color: yellow;
+}
+
+img {
+    border: 2px solid black;
+}
+
+p {
+    text-align: center;
+    color: blue;
+}

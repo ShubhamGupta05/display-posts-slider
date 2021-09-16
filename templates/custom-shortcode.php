@@ -8,6 +8,8 @@
  * @since 1.0.0
  */
 
+wp_enqueue_style( 'style' );
+
 ?>
 <article>
 	<h2><?php echo esc_html( $old_post->post_title ); ?></h2>

@@ -8,6 +8,7 @@
  * @since 1.0.0
  */
 
+// enqueuing the stylesheet.
 wp_enqueue_style( 'style' );
 
 ?>

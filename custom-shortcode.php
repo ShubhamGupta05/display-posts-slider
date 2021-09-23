@@ -29,14 +29,14 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 0.1.0
  */
-define( 'CS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'CS_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 
 /**
  * Plugin's url path
  *
  * @since 0.1.0
  */
-define( 'CS_URL', plugin_dir_url( __FILE__ ) );
+define( 'CS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 /**
  * Includes the main functionality file.

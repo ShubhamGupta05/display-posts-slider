@@ -11,17 +11,17 @@
 defined( 'ABSPATH' ) || exit;
 
 // adds the custom shortcode.
-add_shortcode( 'custom_shortcode', 'custom_shortcode_get_posts' );
+add_shortcode( 'custom_shortcode', 'cs_get_posts' );
 
 // adds the custom stylesheet.
-add_action( 'wp_enqueue_scripts', 'enqueue_style' );
+add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
 
 /**
  * Fetches the oldest 5 posts.
  *
  * @since 1.0.0
  */
-function custom_shortcode_get_posts() {
+function cs_get_posts() {
 
 	// declaring $args variable and assigning the values to the properties.
 	$args = array(
@@ -43,7 +43,7 @@ function custom_shortcode_get_posts() {
 		 *
 		 * @since 1.0.0
 		 */
-		include CS_PATH . '/templates/custom-shortcode.php';
+		include CS_PATH . 'templates/custom-shortcode.php';
 	}
 }
 
@@ -53,12 +53,12 @@ function custom_shortcode_get_posts() {
  *
  * @since 1.0.0
  */
-function enqueue_style() {
+function cs_enqueue_style() {
 
 	// passing parameters to  wp_register_style function.
 	wp_register_style(
 		'style',
-		CS_URL . '/assets/css/style.css',
+		CS_URL . 'assets/css/style.css',
 		array(),
 		1,
 		'all'

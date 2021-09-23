@@ -9,7 +9,7 @@
  */
 
 // enqueuing the stylesheet.
-wp_enqueue_style( 'style' );
+// wp_enqueue_style( 'style' );.
 
 ?>
 <article>

@@ -63,4 +63,5 @@ function cs_enqueue_style() {
 		1,
 		'all'
 	);
+	wp_enqueue_style( 'style' );
 }

@@ -34,7 +34,7 @@ function cs_get_posts() {
 	$oldest_posts_query = new WP_Query( $args );
 
 	// shows an array of all the post.
-	print_r( $oldest_posts_query->posts );
+	// print_r( $oldest_posts_query->posts );.
 
 	// Loops to get post from $old_post.
 	foreach ( $oldest_posts_query->posts as $old_post ) {

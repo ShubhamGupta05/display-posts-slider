@@ -1,26 +1,23 @@
 .article1{
-    overflow:auto;
-    background: red;
-    margin: 0 1rem 1.5rem 1rem;
-    position: relative;
-    width: auto;
-  }
-
-.para1{
-    color: blue;
+  background: green;
+  position: relative;
+  overflow: auto;
 }
 
-.heading{
-    color: yellow
-  }
-  
 .img1{
-    float: left;
-    margin: 1rem;
-  }
+  display: inline-block;
+  width: 49%;
+  border: 5px solid blue;
+}
+
+.article2{
+  display: inline-block;
+  width: 50%; 
+  border: 5px solid black;
+}
 
 .a1{
-    position: absolute;
-    right:0;
-    bottom:0;
-  }
+  position: absolute;
+  right:0;
+  bottom:0;
+}

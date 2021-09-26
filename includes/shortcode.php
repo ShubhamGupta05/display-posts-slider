@@ -21,20 +21,21 @@ add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
  *
  * @since 1.0.0
  */
-function cs_get_posts() {
+function cs_get_posts( $atts ) {
 
 	// declaring $args variable and assigning the values to the properties.
-	$args = array(
-		'post_status'    => 'publish',
-		'posts_per_page' => 5,
-		'orderby'        => 'post_date',
-		'order'          => 'DESC',
+	$attributes = shortcode_atts(
+		array(
+			'post_per_page' => 5,
+			'post_type'     => 'post',
+		),
+		$atts
 	);
+	print_r( $atts );
+	print_r( 'check the attribute now' );
+	print_r( $attributes );
 
-	$oldest_posts_query = new WP_Query( $args );
-
-	// shows an array of all the post.
-	// print_r( $oldest_posts_query->posts );.
+	$oldest_posts_query = new WP_Query( $attributes );
 
 	// Loops to get post from $old_post.
 	foreach ( $oldest_posts_query->posts as $old_post ) {

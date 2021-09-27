@@ -26,8 +26,8 @@ function cs_get_posts( $atts ) {
 	// declaring $args variable and assigning the values to the properties.
 	$attributes = shortcode_atts(
 		array(
-			'post_per_page' => 5,
-			'post_type'     => 'post',
+			'posts_per_page' => 5,
+			'post_type'      => 'post',
 		),
 		$atts
 	);

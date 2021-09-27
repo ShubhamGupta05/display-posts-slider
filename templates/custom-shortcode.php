@@ -17,6 +17,6 @@
 	<article class='article2'>
 		<h2 class='heading'><?php echo esc_html( $old_post->post_title ); ?></h2>
 		<p class='para1'><?php echo esc_html( $old_post->post_excerpt ); ?></p>
-		<a class='a1' href="#" title="Read More">Read More</a>
+		<a class='a1' href="<?php echo esc_html( get_permalink( $old_post->ID ) ); ?>" title="Read More">Read More</a>
 	</article>
 </article>

@@ -20,6 +20,7 @@ add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
  * Fetches the oldest 5 posts.
  *
  * @since 1.0.0
+ * @param array $atts attribute passed while calling shortcode.
  */
 function cs_get_posts( $atts ) {
 

@@ -58,12 +58,11 @@ function cs_get_posts( $atts ) {
 function cs_enqueue_style() {
 
 	// passing parameters to  wp_register_style function.
-	wp_register_style(
-		'style',
+	wp_enqueue_style(
+		'cs_style',
 		CS_URL . 'assets/css/style.css',
 		array(),
 		1,
 		'all'
 	);
-	wp_enqueue_style( 'style' );
 }

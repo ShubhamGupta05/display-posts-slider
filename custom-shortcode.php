@@ -43,4 +43,4 @@ define( 'CS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
  *
  * @since 1.0.0
  */
-require_once 'includes/shortcode.php';
+require_once CS_PATH . 'includes/shortcode.php';

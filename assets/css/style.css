@@ -1,22 +1,20 @@
-.article1{
+.cs_post_template{
   background: green;
   position: relative;
   overflow: auto;
 }
 
-.img1{
-  display: inline-block;
+.cs_post_thumbnail{
+  float: left;
   width: 49%;
   border: 5px solid blue;
 }
 
-.article2{
-  display: inline-block;
-  width: 50%; 
-  border: 5px solid black;
+.cs_post_title{
+  clear: none;
 }
 
-.a1{
+.cs_post_url{
   position: absolute;
   right:0;
   bottom:0;

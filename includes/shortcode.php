@@ -75,7 +75,7 @@ function cs_enqueue_style() {
 		'cs_style',
 		CS_URL . 'assets/css/style.css',
 		array(),
-		1,
+		CS_VERSION,
 		'all'
 	);
 }

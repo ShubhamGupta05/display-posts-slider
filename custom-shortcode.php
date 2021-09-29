@@ -38,6 +38,17 @@ define( 'CS_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
  */
 define( 'CS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
+$plugin_data    = get_plugin_data( __FILE__ );
+$plugin_version = $plugin_data['Version'];
+
+
+/**
+ * The current version
+ *
+ * @since 0.1.0
+ */
+define( 'CS_VERSION', '1.0.0' );
+
 /**
  * Includes the main functionality file.
  *

@@ -32,10 +32,23 @@ function cs_get_posts( $atts ) {
 		),
 		$atts
 	);
-	print_r( $atts );
-	print_r( 'check the attribute now' );
-	print_r( $attributes );
+	if ( is_string( $attributes['post_type'] ) ) {
+		$register_post = get_post_types();
+		if ( in_array( $attributes['post_type'], $register_post ) ) {
+			print_r( $attributes['post_type'] );
+		} else {
+			print_r( $attributes['post_type'] . ' is not a valid post type we will display general post type ' );
+			$attributes['post_type'] = 'post';
+		}
+	}
 
+	if ( is_int( $attributes['posts_per_page'] ) ) {
+		print_r( $attributes );
+	} else {
+		print_r( $attributes['posts_per_page'] . ' is not a valid number we will display default number of posts ' );
+		$attributes['posts_per_page'] = 5;
+		print_r( $attributes );
+	}
 	$oldest_posts_query = new WP_Query( $attributes );
 
 	// Loops to get post from $old_post.

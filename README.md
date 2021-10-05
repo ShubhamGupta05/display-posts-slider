@@ -13,6 +13,7 @@ Allows you to fetch posts from the database on the basis of the parameters you p
 # Installation
 
 1. Download the plugin zip file from the given link(https://github.com/ShubhamGupta05/custom-shortcode)
+
 2. Click on Code button and select Download Zip.
 
 3. Once the file gets downlaoded. Go to your site dashboard.

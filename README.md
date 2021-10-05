@@ -12,5 +12,16 @@ Allows you to fetch posts from the database on the basis of the parameters you p
   
 # Installation
 
- Download the plugin zip file from the given link(https://github.com/ShubhamGupta05/custom-shortcode)
+1. Download the plugin zip file from the given link(https://github.com/ShubhamGupta05/custom-shortcode)
 
+2. Go to your site dashboard and click the Plugin tab in the left panel.
+
+3. Click on Add New plugin.
+
+4. Click on the Upload Plugin button.
+
+5. Select the file you downloaded and click on Install now.
+
+6. Once the plugin is install. It will ask for the activation.
+
+7. Click on Activating plugin button.

@@ -10,18 +10,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * Initial function that will add action and shortcode to the code.
- *
- * @since 1.0.0
- */
-function cs_init() {
-	// adds the custom shortcode.
-	add_shortcode( 'custom_shortcode', 'cs_get_posts' );
+// adds the custom shortcode.
+add_shortcode( 'custom_shortcode', 'cs_get_posts' );
 
-	// adds the custom stylesheet.
-	add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
-}
+// adds the custom stylesheet.
+add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
+
 /**
  * Fetches the oldest 5 posts.
  *
@@ -30,24 +24,14 @@ function cs_init() {
  */
 function cs_get_posts( $atts ) {
 
-	$default_attributes = array(
-		'posts_per_page' => 5,
-		'post_type'      => 'post',
-	);
 	// declaring $args variable and assigning the values to the properties.
-	$attributes = shortcode_atts( $default_attributes, $atts );
-	$attributes = cs_check_posttype( $attributes );
-	$attributes = cs_check_postperpage( $attributes );
-	cs_new_query( $attributes );
-}
-
-/**
- * Fetches the oldest 5 posts.
- *
- * @since 1.0.0
- * @param array $attributes attribute passed while calling shortcode.
- */
-function cs_check_posttype( $attributes ) {
+	$attributes = shortcode_atts(
+		array(
+			'posts_per_page' => 5,
+			'post_type'      => 'post',
+		),
+		$atts
+	);
 	if ( is_string( $attributes['post_type'] ) ) {
 		$register_post = get_post_types();
 		if ( in_array( $attributes['post_type'], $register_post ) ) {
@@ -57,35 +41,14 @@ function cs_check_posttype( $attributes ) {
 			$attributes['post_type'] = 'post';
 		}
 	}
-	return $attributes;
-}
 
-/**
- * Fetches the oldest 5 posts.
- *
- * @since 1.0.0
- * @param array $attributes attribute passed while calling shortcode.
- */
-function cs_check_postperpage( $attributes ) {
-	print_r( $attributes['posts_per_page'] );
-	print_r( is_numeric( $attributes['posts_per_page'] ) );
-	if ( is_numeric( $attributes['posts_per_page'] ) ) {
+	if ( is_int( $attributes['posts_per_page'] ) ) {
 		print_r( $attributes );
 	} else {
 		print_r( $attributes['posts_per_page'] . ' is not a valid number we will display default number of posts ' );
 		$attributes['posts_per_page'] = 5;
 		print_r( $attributes );
 	}
-	return $attributes;
-}
-
-/**
- * Fetches the oldest 5 posts.
- *
- * @since 1.0.0
- * @param array $attributes attribute passed while calling shortcode.
- */
-function cs_new_query( $attributes ) {
 	$oldest_posts_query = new WP_Query( $attributes );
 
 	// Loops to get post from $old_post.
@@ -98,6 +61,8 @@ function cs_new_query( $attributes ) {
 		include CS_PATH . 'templates/custom-shortcode.php';
 	}
 }
+
+
 /**
  * Adds the custom css file name style.css.
  *

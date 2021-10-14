@@ -10,12 +10,18 @@
 
 defined( 'ABSPATH' ) || exit;
 
-// adds the custom shortcode.
-add_shortcode( 'custom_shortcode', 'cs_get_posts' );
+/**
+ * Initial function that will add action and shortcode to the code.
+ *
+ * @since 1.0.0
+ */
+function cs_init() {
+	// adds the custom shortcode.
+	add_shortcode( 'custom_shortcode', 'cs_get_posts' );
 
-// adds the custom stylesheet.
-add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
-
+	// adds the custom stylesheet.
+	add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
+}
 /**
  * Fetches the oldest 5 posts.
  *
@@ -24,27 +30,15 @@ add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
  */
 function cs_get_posts( $atts ) {
 
+	$default_attributes = array(
+		'posts_per_page' => 5,
+		'post_type'      => 'post',
+	);
 	// declaring $args variable and assigning the values to the properties.
-	$attributes = cs_set_attributes( $atts );
+	$attributes = shortcode_atts( $default_attributes, $atts );
 	$attributes = cs_check_posttype( $attributes );
 	$attributes = cs_check_postperpage( $attributes );
 	cs_new_query( $attributes );
-}
-/**
- * Fetches the oldest 5 posts.
- *
- * @since 1.0.0
- * @param array $atts attribute passed while calling shortcode.
- */
-function cs_set_attributes( $atts ) {
-	$attribute = shortcode_atts(
-		array(
-			'posts_per_page' => 5,
-			'post_type'      => 'post',
-		),
-		$atts
-	);
-	return $attribute;
 }
 
 /**

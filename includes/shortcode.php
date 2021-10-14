@@ -23,10 +23,10 @@ class Custom_Shortcode {
 	 */
 	public function init() {
 		// adds the custom shortcode.
-		add_shortcode( 'custom_shortcode', 'cs_get_posts' );
+		add_shortcode( 'custom_shortcode', array( $this, 'cs_get_posts' ) );
 
 		// adds the custom stylesheet.
-		add_action( 'wp_enqueue_scripts', 'cs_enqueue_style' );
+		add_action( 'wp_enqueue_scripts', array( $this, 'cs_enqueue_style' ) );
 	}
 	/**
 	 * Fetches the oldest 5 posts.
@@ -42,9 +42,9 @@ class Custom_Shortcode {
 		);
 		// declaring $args variable and assigning the values to the properties.
 		$attributes = shortcode_atts( $default_attributes, $atts );
-		$attributes = cs_check_posttype( $attributes );
-		$attributes = cs_check_postperpage( $attributes );
-		cs_new_query( $attributes );
+		$attributes = $this->cs_check_posttype( $attributes );
+		$attributes = $this->cs_check_postperpage( $attributes );
+		$this->cs_new_query( $attributes );
 	}
 
 	/**

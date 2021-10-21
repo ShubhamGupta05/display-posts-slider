@@ -39,8 +39,17 @@ class Custom_Shortcode {
 		$default_attributes = array(
 			'posts_per_page' => 5,
 			'post_type'      => 'post',
-			'category_name'  => 'mypost',
 			'author_name'    => 'shubham',
+			'post_status'    => 'publish',
+			'order'          => 'DESC',
+			'orderby'        => 'rand',
+			'date_query'     => array(
+				array(
+					'after'     => 'September 1st, 2021',
+					'before'    => 'September 30th, 2021',
+					'inclusive' => true,
+				),
+			),
 		);
 		// declaring $args variable and assigning the values to the properties.
 		$attributes = shortcode_atts( $default_attributes, $atts );

@@ -145,6 +145,20 @@ class Custom_Shortcode {
 	 * @since 1.0.0
 	 * @param array $attributes attribute passed while calling shortcode.
 	 */
+	public function check_pagename( $attributes ) {
+		if ( is_string( $attributes['pagename'] ) ) {
+			return $attributes;
+		} else {
+			print_r( $attributes['pagename'] . ' is not a valid page name' );
+			return $attributes;
+		}
+	}
+	/**
+	 * Fetches the oldest 5 posts.
+	 *
+	 * @since 1.0.0
+	 * @param array $attributes attribute passed while calling shortcode.
+	 */
 	public function check_order( $attributes ) {
 		if ( is_string( $attributes['order'] ) ) {
 			return $attributes;

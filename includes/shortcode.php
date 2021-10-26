@@ -37,19 +37,32 @@ class Custom_Shortcode {
 	public function get_posts( $atts ) {
 
 		$default_attributes = array(
-			'posts_per_page' => 5,
-			'post_type'      => 'post',
-			'author_name'    => 'shubham',
-			'post_status'    => 'publish',
-			'order'          => 'DESC',
-			'orderby'        => 'rand',
-			'date_query'     => array(
-				array(
-					'after'     => 'September 1st, 2021',
-					'before'    => 'September 30th, 2021',
-					'inclusive' => true,
-				),
-			),
+			'posts_per_page'       => 5,
+			'post_type'            => 'post',
+			'name'                 => 'this is my first post',
+			'author_name'          => 'shubham',
+			'post__not_in'         => 'post id',
+			'post_status'          => 'publish',
+			'order'                => 'DESC',
+			'orderby'              => 'rand',
+			'date_query_after'     => 'September 1st, 2021',
+			'date_query_before'    => 'September 30th, 2021',
+			'date_query_inclusive' => 'true',
+			'pagename'             => 'checkshortcode',
+			's'                    => 'this',
+			'category_name'        => 'mypost',
+			'category__not_in'     => 'uncategorized id',
+			'tag'                  => 'action',
+			'tag__not_in'          => 'drama id',
+			'comment_count'        => 1,
+			'tax_query_taxonomy'   => 'movie_genre',
+			'tax_query_field'      => 'moviegenre',
+			'tax_query_terms'      => 'action',
+			'meta_key'             => 'price',
+			'meta_value_num'       => 100,
+			'meta_compare'         => '<',
+			'meta_value'           => 'if string value',
+			'post_mime_type'       => 'image/gif',
 		);
 		// declaring $args variable and assigning the values to the properties.
 		$attributes = shortcode_atts( $default_attributes, $atts );

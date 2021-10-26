@@ -42,8 +42,8 @@ Allows you to fetch posts from the database on the basis of the parameters you p
 
 List of the parameters that can be passed while calling the shortcode:
 
-1. Posts_per_page ( Pass the number of posts you want to display. Maximum limit is set to 100)
-    (Optional)(Number)
+1. Posts_per_page ( Pass the number of posts you want to display. Maximum limit is set to 100)<br>
+    (Optional)(Number)<br>
     Example:- [custom_shortcode posts_per_page = 5]
 2. Post_type ( Pass the post type for which you need the post )
     (Required*)(String)

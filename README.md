@@ -45,23 +45,23 @@ List of the parameters that can be passed while calling the shortcode:
 1. Posts_per_page ( Pass the number of posts you want to display. Maximum limit is set to 100)<br>
     (Optional)(Number)<br>
     Example:- [custom_shortcode posts_per_page = 5]
-2. Post_type ( Pass the post type for which you need the post )
-    (Required*)(String)
+2. Post_type ( Pass the post type for which you need the post )<br>
+    (Required*)(String)<br>
     Example:- [custom_shortcode post_type = 'post']
-3. Name ( Pass the name of the post you want to display)
-    (Optional)(String)
+3. Name ( Pass the name of the post you want to display)<br>
+    (Optional)(String)<br>
     Example:- [custom_shortcode name = 'this is my first post']
-4. Author_name (Pass the name of the author whose post you want to display)
-    (Optional)(String)
+4. Author_name (Pass the name of the author whose post you want to display)<br>
+    (Optional)(String)<br>
      Example:- [custom_shortcode author_name = 'Shubham']
-5. post_status (Pass the status of the post which you want to display example: published, draft,      revision, attachement)
-    (Optional)(String)
+5. post_status (Pass the status of the post which you want to display example: published, draft,      revision, attachement)<br>
+    (Optional)(String)<br>
     Example:- [custom_shortcode post_status = 'published']
-6. order (Pass Asc or Desc to display your posts in the order you want)
-    (Required)(String)
+6. order (Pass Asc or Desc to display your posts in the order you want)<br>
+    (Required)(String)<br>
     Example:- [custom_shortcode order = 'DESC']
-7. Orderby ( Pass the keyvalue on the basis of which you want to sort you posts)
-     (Optional)(String)
+7. Orderby ( Pass the keyvalue on the basis of which you want to sort you posts)<br>
+     (Optional)(String)<br>
     Example:- [custom_shortcode orderby = 'date']
 
 # Warning 

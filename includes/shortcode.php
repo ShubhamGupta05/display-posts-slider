@@ -39,7 +39,6 @@ class Custom_Shortcode {
 		$default_attributes = array(
 			'posts_per_page'       => 5,
 			'post_type'            => 'post',
-			'name'                 => 'this is my first post',
 			'author_name'          => 'shubham',
 			'post__not_in'         => 'post id',
 			'post_status'          => 'publish',
@@ -48,7 +47,6 @@ class Custom_Shortcode {
 			'date_query_after'     => 'September 1st, 2021',
 			'date_query_before'    => 'September 30th, 2021',
 			'date_query_inclusive' => 'true',
-			'pagename'             => 'checkshortcode',
 			's'                    => 'this',
 			'category_name'        => 'mypost',
 			'category__not_in'     => 'uncategorized id',
@@ -68,7 +66,7 @@ class Custom_Shortcode {
 		$attributes = shortcode_atts( $default_attributes, $atts );
 		foreach ( $attributes as $atts_key => $value ) {
 			$method = 'check_$atts_key';
-			$this->$method( $attributes );
+			$this->$method( $value );
 		}
 		print_r( $attributes );
 		$this->new_query( $attributes );
@@ -80,31 +78,29 @@ class Custom_Shortcode {
 	 * @since 1.0.0
 	 * @param array $attributes attribute passed while calling shortcode.
 	 */
-	public function check_post_type( $attributes ) {
-		if ( is_string( $attributes['post_type'] ) ) {
+	public function check_post_type( $post_type ) {
+		$postvalue = (string) $post_type;
+		if ( $postvalue ) {
 			$register_post = get_post_types();
-			if ( in_array( $attributes['post_type'], $register_post ) ) {
-				return $attributes;
+			if ( in_array( $postvalue, $register_post ) ) {
+				return $postvalue;
 			} else {
-				print_r( $attributes['post_type'] . ' is not a valid post type we will display general post type ' );
-				$attributes['post_type'] = 'post';
-				return $attributes;
+				print_r( $postvalue . ' is not a valid post type' );
 			}
 		}
 	}
-
 	/**
 	 * Fetches the oldest 5 posts.
 	 *
 	 * @since 1.0.0
 	 * @param array $attributes attribute passed while calling shortcode.
 	 */
-	public function check_name( $attributes ) {
-		if ( is_string( $attributes['name'] ) ) {
-			return $attributes;
+	public function check_date_query_after( $date_after ) {
+		$dateafter = validateDate( $date_after, $format = 'm-d-y' );
+		if ( $dateafter ) {
+			return $date_after;
 		} else {
-			print_r( $attributes['name'] . ' is not a valid post name  we will display default posts ' );
-			return $attributes;
+			print_r( $date_after . ' is not a valid date ' );
 		}
 	}
 	/**
@@ -113,89 +109,12 @@ class Custom_Shortcode {
 	 * @since 1.0.0
 	 * @param array $attributes attribute passed while calling shortcode.
 	 */
-	public function check_date_query_after( $attributes ) {
-		$date_test = validateDate( $attributes['date_query_after'], $format = 'm-d-y' );
-		if ( $date_test ) {
-			return $attributes;
+	public function check_date_query_before( $date_before ) {
+		$datebefore = validateDate( $date_before, $format = 'm-d-y' );
+		if ( $datebefore ) {
+			return $date_before;
 		} else {
-			print_r( $attributes['date_query_after'] . ' is not a valid date  we will display default posts ' );
-			$attributes['date_query_after'] ='';
-			return $attributes;
-		}
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_date_query_before( $attributes ) {
-		$date_test1 = validateDate( $attributes['date_query_before'], $format = 'm-d-y' );
-		if ( $date_test1 ) {
-			return $attributes;
-		} else {
-			print_r( $attributes['date_query_before'] . ' is not a valid date  we will display default posts ' );
-			$attributes['date_query_before'] ='';
-			return $attributes;
-		}
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_pagename( $attributes ) {
-		if ( is_string( $attributes['pagename'] ) ) {
-			return $attributes;
-		} else {
-			print_r( $attributes['pagename'] . ' is not a valid page name' );
-			return $attributes;
-		}
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_order( $attributes ) {
-		if ( is_string( $attributes['order'] ) ) {
-			return $attributes;
-		} else {
-			print_r( $attributes['order'] . ' is not a valid post order we will display posts in ascending order ' );
-			$attributes['order'] = 'ASC';
-			return $attributes;
-		}
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_orderby( $attributes ) {
-		if ( is_string( $attributes['orderby'] ) ) {
-			return $attributes;
-		} else {
-			print_r( $attributes['orderby'] . ' is not a valid post orderby value we will display posts in random order ' );
-			$attributes['orderby'] = 'rand';
-			return $attributes;
-		}
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_post_status( $attributes ) {
-		if ( is_string( $attributes['post_status'] ) ) {
-			return $attributes;
-		} else {
-			print_r( $attributes['post_status'] . ' is not a valid post status we will display published posts ' );
-			$attributes['post_status'] = 'published';
-			return $attributes;
+			print_r( $date_before . ' is not a valid date  we will display default posts ' );
 		}
 	}
 
@@ -205,14 +124,55 @@ class Custom_Shortcode {
 	 * @since 1.0.0
 	 * @param array $attributes attribute passed while calling shortcode.
 	 */
-	public function check_post_per_page( $attributes ) {
-		if ( is_numeric( $attributes['posts_per_page'] ) ) {
-			return $attributes;
+	public function check_order( $check_order ) {
+		$checkorder = (string) $check_order;
+		$order_list = array( 'ASC', 'DESC' );
+		if ( in_array( $checkorder, $order_list ) ) {
+			return $checkorder;
 		} else {
-			print_r( $attributes['posts_per_page'] . ' is not a valid number we will display default number of posts ' );
-			$attributes['posts_per_page'] = 5;
-			return $attributes;
+			print_r( $checkorder . ' is not a valid  order' );
 		}
+	}
+	/**
+	 * Fetches the oldest 5 posts.
+	 *
+	 * @since 1.0.0
+	 * @param array $attributes attribute passed while calling shortcode.
+	 */
+	public function check_orderby( $check_orderby ) {
+		$checkorderby = (string) $check_orderby;
+		$orderby_list = array( 'none', 'ID', 'author', 'title', 'date', 'modified', 'rand', 'comment_count', 'menu_order' );
+		if ( in_array( $checkorderby, $orderby_list ) ) {
+			return $checkorderby;
+		} else {
+			print_r( $check_orderby . ' is not a valid post orderby value ' );
+		}
+	}
+	/**
+	 * Fetches the oldest 5 posts.
+	 *
+	 * @since 1.0.0
+	 * @param array $attributes attribute passed while calling shortcode.
+	 */
+	public function check_post_status( $post_status ) {
+		$poststatus      = (string) $post_status;
+		$poststatus_list = get_post_statuses();
+		if ( in_array( $poststatus, $poststatus_list ) ) {
+			return $poststatus;
+		} else {
+			print_r( $post_status . ' is not a valid post status ' );
+		}
+	}
+
+	/**
+	 * Fetches the oldest 5 posts.
+	 *
+	 * @since 1.0.0
+	 * @param array $attributes attribute passed while calling shortcode.
+	 */
+	public function check_post_per_page( $posts_per_page ) {
+		$postsperpage = (int) $posts_per_page;
+		return $postsperpage;
 	}
 
 	/**

@@ -267,7 +267,7 @@ class Custom_Shortcode {
 				$this->errors[] = $category . ' is not a valid category name';
 			} 
 			if ( $categoryid != 0 ) {
-				category_id[] = $categoryid;
+				$category_id[] = $categoryid;
 			} 
 		}
 		return category_id;

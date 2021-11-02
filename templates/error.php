@@ -10,7 +10,7 @@
 
 
 ?>
-<article class='error_template'>
-    <img class='error_img' src="https://www.freeiconspng.com/uploads/error-icon-4.png" width="350" alt="Free High quality Error Icon"/>
-    <h1>An error occured.</h1>
+<article class='cs_post_template'>
+    <img class='cs_post_thumbnail' src="https://www.freeiconspng.com/uploads/error-icon-4.png" width="350" alt="Free High quality Error Icon"/>
+    <h1 class='cs_post_title'>An error occured.</h1>
 </article>

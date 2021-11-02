@@ -32,7 +32,7 @@ class Custom_Shortcode {
 		add_shortcode( 'custom_shortcode', array( $this, 'get_posts' ) );
 
 		// adds the custom stylesheet.
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom' ) );
 	}
 	/**
 	 * Fetches the oldest 5 posts.
@@ -368,12 +368,19 @@ class Custom_Shortcode {
 	 *
 	 * @since 1.0.0
 	 */
-	public function enqueue_style() {
+	public function enqueue_custom() {
 
 		// passing parameters to  wp_register_style function.
 		wp_enqueue_style(
 			'cs_style',
 			CS_URL . 'assets/css/style.css',
+			array(),
+			CS_VERSION,
+			'all'
+		);
+		wp_enqueue_script(
+			'cs_script',
+			CS_URL . 'assets/js/jquery.jdSlider-latest.min.js',
 			array(),
 			CS_VERSION,
 			'all'

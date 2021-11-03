@@ -311,7 +311,7 @@ class Custom_Shortcode {
 				$this->errors[] = $tag . ' is not a valid tag name';
 			} 
 			if ( ! empty( $tagid ) ) {
-				tag_id[] = $tagid[0];
+				$tag_id[] = $tagid[0];
 			} 
 		}
 		return category_id;
@@ -352,7 +352,7 @@ class Custom_Shortcode {
 	 */
 	public function new_query( $attributes ) {
 		$oldest_posts_query = new WP_Query( $attributes );
-
+		
 		// Loops to get post from $old_post.
 		foreach ( $oldest_posts_query->posts as $old_post ) {
 			/**

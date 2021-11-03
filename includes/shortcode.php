@@ -352,7 +352,11 @@ class Custom_Shortcode {
 	 */
 	public function new_query( $attributes ) {
 		$oldest_posts_query = new WP_Query( $attributes );
-		
+
+		if ( ! empty( $this->errors ) ) {
+			$this->display_errors();
+		}
+
 		// Loops to get post from $old_post.
 		foreach ( $oldest_posts_query->posts as $old_post ) {
 			/**
@@ -361,6 +365,18 @@ class Custom_Shortcode {
 			 * @since 1.0.0
 			 */
 			include CS_PATH . 'templates/custom-shortcode.php';
+		}
+	}
+	/**
+	 * Adds the custom css file name style.css.
+	 *
+	 * @since 1.0.0
+	 */
+	public function display_errors() {
+		// Loops to get post from $old_post.
+
+		foreach ( $this->errors as $error ) {
+			include CS_PATH . 'templates/error-message.php';
 		}
 	}
 	/**

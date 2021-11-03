@@ -12,5 +12,5 @@
 ?>
 <article class='cs_post_template'>
     <img class='cs_post_thumbnail' src="https://www.freeiconspng.com/uploads/error-icon-4.png" width="350" alt="Free High quality Error Icon"/>
-    <h1 class='cs_post_title'>An error occured.</h1>
+    <h2 class='cs_post_title'><?php echo esc_html( $error ); ?></h2>
 </article>

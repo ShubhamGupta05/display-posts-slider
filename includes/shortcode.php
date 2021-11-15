@@ -181,7 +181,7 @@ class Custom_Shortcode {
 	 */
 	public function check_orderby( $check_orderby ) {
 		$check_orderby = (string) $check_orderby;
-		if ( empty( $check_orderby ) ){
+		if ( empty( $check_orderby ) ) {
 			return '';
 		}
 		$orderby_list = array( 'none', 'ID', 'author', 'title', 'date', 'modified', 'rand', 'comment_count', 'menu_order' );
@@ -259,16 +259,16 @@ class Custom_Shortcode {
 		if ( empty( $category_not_in ) ) {
 			return '';
 		}
-		$name = explode( ',', $category_not_in );
+		$name        = explode( ',', $category_not_in );
 		$category_id = array();
 		foreach ( $name as $category ) {
 			$categoryid = get_cat_ID( $category );
 			if ( $categoryid == 0 ) {
 				$this->errors[] = $category . ' is not a valid category name';
-			} 
+			}
 			if ( $categoryid != 0 ) {
 				$category_id[] = $categoryid;
-			} 
+			}
 		}
 		return category_id;
 	}
@@ -303,16 +303,16 @@ class Custom_Shortcode {
 		if ( empty( $tag_not_in ) ) {
 			return '';
 		}
-		$name = explode( ',', $tag_not_in );
+		$name   = explode( ',', $tag_not_in );
 		$tag_id = array();
 		foreach ( $name as $tag ) {
 			$tagid = get_term_by( 'name', $tag, 'post_tag' );
 			if ( empty( $tagid ) ) {
 				$this->errors[] = $tag . ' is not a valid tag name';
-			} 
+			}
 			if ( ! empty( $tagid ) ) {
 				$tag_id[] = $tagid[0];
-			} 
+			}
 		}
 		return category_id;
 	}
@@ -395,9 +395,16 @@ class Custom_Shortcode {
 			'all'
 		);
 		wp_enqueue_script(
-			'cs_script',
+			'js_script',
 			CS_URL . 'assets/js/jquery.jdSlider-latest.min.js',
 			array(),
+			CS_VERSION,
+			'all'
+		);
+		wp_enqueue_script(
+			'cs_script',
+			CS_URL . 'assets/js/custom-shortcode.js',
+			array( 'jquery' ),
 			CS_VERSION,
 			'all'
 		);

@@ -1,8 +1,8 @@
 <?php
 /**
- * Custom Shortcode Error Template.
+ * Display Posts Slider Error Template.
  *
- * @package custom-shortcode/templates
+ * @package display-posts-slider/templates
  *
  * @version 1.0.0
  * @since 1.0.0

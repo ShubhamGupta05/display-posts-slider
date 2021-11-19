@@ -2,7 +2,7 @@
 /**
  * Shortcode Plugin File
  *
- * @package custom-shortcode
+ * @package display-posts-slider
  *
  * @since 1.0.0
  * @version 1.0.0
@@ -29,7 +29,7 @@ class Custom_Shortcode {
 	 */
 	public function init() {
 		// adds the custom shortcode.
-		add_shortcode( 'custom_shortcode', array( $this, 'get_posts' ) );
+		add_shortcode( 'display-posts-slider', array( $this, 'get_posts' ) );
 
 		// adds the custom stylesheet.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom' ) );
@@ -364,7 +364,7 @@ class Custom_Shortcode {
 			 *
 			 * @since 1.0.0
 			 */
-			include CS_PATH . 'templates/custom-shortcode.php';
+			include DPS_PATH . 'templates/display-posts-slider.php';
 		}
 	}
 	/**
@@ -376,7 +376,7 @@ class Custom_Shortcode {
 		// Loops to get post from $old_post.
 
 		foreach ( $this->errors as $error ) {
-			include CS_PATH . 'templates/error-message.php';
+			include DPS_PATH . 'templates/error-message.php';
 		}
 	}
 	/**
@@ -389,23 +389,23 @@ class Custom_Shortcode {
 		// passing parameters to  wp_register_style function.
 		wp_enqueue_style(
 			'cs_style',
-			CS_URL . 'assets/css/style.css',
+			DPS_URL . 'assets/css/style.css',
 			array(),
-			CS_VERSION,
+			DPS_VERSION,
 			'all'
 		);
 		wp_enqueue_script(
 			'js_script',
-			CS_URL . 'assets/js/jquery.jdSlider-latest.min.js',
+			DPS_URL . 'assets/js/jquery.jdSlider-latest.min.js',
 			array(),
-			CS_VERSION,
+			DPS_VERSION,
 			'all'
 		);
 		wp_enqueue_script(
 			'cs_script',
-			CS_URL . 'assets/js/custom-shortcode.js',
+			DPS_URL . 'assets/js/custom-shortcode.js',
 			array( 'jquery' ),
-			CS_VERSION,
+			DPS_VERSION,
 			'all'
 		);
 	}

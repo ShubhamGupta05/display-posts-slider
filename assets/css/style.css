@@ -1,20 +1,20 @@
-.cs_post_template{
+.dps_post_template{
   background: green;
   position: relative;
   overflow: auto;
 }
 
-.cs_post_thumbnail{
+.dps_post_thumbnail{
   float: left;
   width: 49%;
   border: 5px solid blue;
 }
 
-.cs_post_title{
+.dps_post_title{
   clear: none;
 }
 
-.cs_post_url{
+.dps_post_url{
   position: absolute;
   right:0;
   bottom:0;

@@ -20,6 +20,7 @@ class Custom_Shortcode {
 	 * Error variable error that will contain all the errors while validating the parameters.
 	 *
 	 * @since 1.0.0
+	 * @var $error
 	 */
 	private $errors = array();
 	/**
@@ -46,7 +47,6 @@ class Custom_Shortcode {
 			'posts_per_page'       => 5,
 			'post_type'            => 'post',
 			'author_name'          => 'shubham',
-			'post__not_in'         => 'post id',
 			'post_status'          => 'publish',
 			'order'                => 'DESC',
 			'orderby'              => 'rand',
@@ -58,15 +58,6 @@ class Custom_Shortcode {
 			'category__not_in'     => 'uncategorized id',
 			'tag'                  => 'action',
 			'tag__not_in'          => 'drama id',
-			'comment_count'        => 1,
-			'tax_query_taxonomy'   => 'movie_genre',
-			'tax_query_field'      => 'moviegenre',
-			'tax_query_terms'      => 'action',
-			'meta_key'             => 'price',
-			'meta_value_num'       => 100,
-			'meta_compare'         => '<',
-			'meta_value'           => 'if string value',
-			'post_mime_type'       => 'image/gif',
 		);
 		// declaring $args variable and assigning the values to the properties.
 		$attributes = shortcode_atts( $default_attributes, $atts );
@@ -79,10 +70,26 @@ class Custom_Shortcode {
 	}
 
 	/**
-	 * Fetches the oldest 5 posts.
+	 * Validate the post_per_page parameter value passed by the user.
 	 *
 	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
+	 * @param array $posts_per_page attribute passed while calling this function.
+	 */
+	public function check_post_per_page( $posts_per_page ) {
+		$posts_per_page = (int) $posts_per_page;
+		if ( ! empty( $posts_per_page ) ) {
+			return $posts_per_page;
+		}
+		$this->errors[] = $posts_per_page . ' is not a valid value for posts per page parameter';
+
+		return '';
+	}
+
+	/**
+	 * Validate the post_type parameter value passed by the user.
+	 *
+	 * @since 1.0.0
+	 *  @param string $post_type attribute passed while calling this function.
 	 */
 	public function check_post_type( $post_type ) {
 		$post_type = (string) $post_type;
@@ -99,122 +106,12 @@ class Custom_Shortcode {
 
 		return '';
 	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_date_query_after( $date_after ) {
-		if ( empty( $date_after ) ) {
-			return '';
-		}
-		if ( validateDate( $date_after, $format = 'm-d-y' ) ) {
-			return $date_after;
-		}
-		$this->errors[] = $date_after . ' is not a valid date';
-
-		return '';
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 */
-	public function check_date_query_before( $date_before ) {
-		if ( empty( $date_before ) ) {
-			return '';
-		}
-		if ( validateDate( $date_before, $format = 'm-d-y' ) ) {
-			return $date_before;
-		}
-		$this->errors[] = $date_before . ' is not a valid date';
-
-		return '';
-	}
 
 	/**
-	 * Fetches the oldest 5 posts.
+	 * Validates the value of the paramter $author_name.
 	 *
 	 * @since 1.0.0
-	 */
-	public function check_date_query_inclusive( $date_inclusive ) {
-		$date_inclusive = (bool) $date_inclusive;
-		if ( empty( $date_inclusive ) ) {
-			return '';
-		}
-		if ( $date_inclusive == 'true' ) {
-			return $date_inclusive;
-		}
-
-		if ( $date_inclusive == 'false' ) {
-			return $date_inclusive;
-		}
-		$this->errors[] = $date_inclusive . ' is not a valid boolean value';
-
-		return '';
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_order( $check_order ) {
-		$check_order = (string) $check_order;
-		if ( empty( $check_order ) ) {
-			return '';
-		}
-		$order_list = array( 'ASC', 'DESC' );
-		if ( in_array( $check_order, $order_list ) ) {
-			return $check_order;
-		}
-		$this->errors[] = $check_order . ' is not a valid  order';
-
-		return '';
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_orderby( $check_orderby ) {
-		$check_orderby = (string) $check_orderby;
-		if ( empty( $check_orderby ) ) {
-			return '';
-		}
-		$orderby_list = array( 'none', 'ID', 'author', 'title', 'date', 'modified', 'rand', 'comment_count', 'menu_order' );
-		if ( in_array( $check_orderby, $orderby_list ) ) {
-			return $checkorderby;
-		}
-		$this->errors[] = $check_orderby . ' is not a valid  orderby type';
-
-		return '';
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 * @param array $attributes attribute passed while calling shortcode.
-	 */
-	public function check_post_status( $post_status ) {
-		$post_status = (string) $post_status;
-		if ( empty( $post_status ) ) {
-			return '';
-		}
-		$poststatus_list = get_post_statuses();
-		if ( in_array( $post_status, $poststatus_list ) ) {
-			return $post_status;
-		}
-		$this->errors[] = $post_status . ' is not a valid  post status';
-
-		return '';
-	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
+	 * @param string $author_name passed while calling the function.
 	 */
 	public function check_author_name( $author_name ) {
 		$author_name = (string) $author_name;
@@ -230,9 +127,142 @@ class Custom_Shortcode {
 		return '';
 	}
 	/**
-	 * Fetches the oldest 5 posts.
+	 * Validate the value of the post_status parameter.
 	 *
 	 * @since 1.0.0
+	 * @param string $post_status attribute passed while calling shortcode.
+	 */
+	public function check_post_status( $post_status ) {
+		$post_status = (string) $post_status;
+		if ( empty( $post_status ) ) {
+			return '';
+		}
+		$poststatus_list = get_post_statuses();
+		if ( in_array( $post_status, $poststatus_list ) ) {
+			return $post_status;
+		}
+		$this->errors[] = $post_status . ' is not a valid  post status';
+
+		return '';
+	}
+
+	/**
+	 * Validate the value of the order parameter.
+	 *
+	 * @since 1.0.0
+	 * @param string $check_order attribute passed while calling shortcode.
+	 */
+	public function check_order( $check_order ) {
+		$check_order = (string) $check_order;
+		if ( empty( $check_order ) ) {
+			return '';
+		}
+		$order_list = array( 'ASC', 'DESC' );
+		if ( in_array( $check_order, $order_list ) ) {
+			return $check_order;
+		}
+		$this->errors[] = $check_order . ' is not a valid  order';
+
+		return '';
+	}
+
+	/**
+	 * Validate the value of the check orderby parameter.
+	 *
+	 * @since 1.0.0
+	 * @param string $check_orderby attribute passed while calling shortcode.
+	 */
+	public function check_orderby( $check_orderby ) {
+		$check_orderby = (string) $check_orderby;
+		if ( empty( $check_orderby ) ) {
+			return '';
+		}
+		$orderby_list = array( 'none', 'ID', 'author', 'title', 'date', 'modified', 'rand', 'comment_count', 'menu_order' );
+		if ( in_array( $check_orderby, $orderby_list ) ) {
+			return $checkorderby;
+		}
+		$this->errors[] = $check_orderby . ' is not a valid  orderby type';
+
+		return '';
+	}
+
+	/**
+	 * Validate the value of date after parameter.
+	 *
+	 * @since 1.0.0
+	 * @param date $date_after attribute passed while calling shortcode.
+	 */
+	public function check_date_query_after( $date_after ) {
+		if ( empty( $date_after ) ) {
+			return '';
+		}
+		if ( validateDate( $date_after, $format = 'm-d-y' ) ) {
+			return $date_after;
+		}
+		$this->errors[] = $date_after . ' is not a valid date';
+
+		return '';
+	}
+	/**
+	 * Validate the value of date before parameter.
+	 *
+	 * @since 1.0.0
+	 * @param date $date_before attribute passed while calling shortcode.
+	 */
+	public function check_date_query_before( $date_before ) {
+		if ( empty( $date_before ) ) {
+			return '';
+		}
+		if ( validateDate( $date_before, $format = 'm-d-y' ) ) {
+			return $date_before;
+		}
+		$this->errors[] = $date_before . ' is not a valid date';
+
+		return '';
+	}
+
+	/**
+	 * Validate the value of date inclusive parameter.
+	 *
+	 * @since 1.0.0
+	 * @param boolean $date_inclusive attribute passed while calling shortcode.
+	 */
+	public function check_date_query_inclusive( $date_inclusive ) {
+		$date_inclusive = (bool) $date_inclusive;
+		if ( empty( $date_inclusive ) ) {
+			return '';
+		}
+		if ( $date_inclusive === 'true' ) {
+			return $date_inclusive;
+		}
+
+		if ( $date_inclusive === 'false' ) {
+			return $date_inclusive;
+		}
+		$this->errors[] = $date_inclusive . ' is not a valid boolean value';
+
+		return '';
+	}
+
+	/**
+	 * Validate the value entered by the user to search.
+	 *
+	 * @since 1.0.0
+	 * @param string $search passed while calling the function.
+	 */
+	public function check_s( $search ) {
+		$search = (string) $search;
+		if ( empty( $search ) ) {
+			return '';
+		}
+		return $search;
+	}
+
+	/**
+	 * Validate the value of the category name parameter.
+	 *
+	 * @since 1.0.0
+	 * @param string $category_name passed while calling the function.
 	 */
 	public function check_category_name( $category_name ) {
 		$category_name = (string) $category_name;
@@ -250,9 +280,10 @@ class Custom_Shortcode {
 		return '';
 	}
 	/**
-	 * Fetches the oldest 5 posts.
+	 * Validate the value passed in category not in parameter.
 	 *
 	 * @since 1.0.0
+	 * @param string $category_not_in passed while calling the function.
 	 */
 	public function check_category__not_in( $category_not_in ) {
 		$category_not_in = (string) $category_not_in;
@@ -274,9 +305,10 @@ class Custom_Shortcode {
 	}
 
 	/**
-	 * Fetches the oldest 5 posts.
+	 * Validate the value passed to the tag parameter.
 	 *
 	 * @since 1.0.0
+	 * @param string $tag passed while calling the function.
 	 */
 	public function check_tag( $tag ) {
 		$tag = (string) $tag;
@@ -294,9 +326,10 @@ class Custom_Shortcode {
 		return '';
 	}
 	/**
-	 * Fetches the oldest 5 posts.
+	 * Validate the value of the tag not in parameter.
 	 *
 	 * @since 1.0.0
+	 * @param string $tag_not_in passed while calling the function.
 	 */
 	public function check_tag__not_in( $tag_not_in ) {
 		$tag_not_in = (string) $tag_not_in;
@@ -316,36 +349,9 @@ class Custom_Shortcode {
 		}
 		return category_id;
 	}
-	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 */
-	public function check_search( $search ) {
-		$search = (string) $search;
-		if ( empty( $search ) ) {
-			return '';
-		}
-		return $search;
-	}
 
 	/**
-	 * Fetches the oldest 5 posts.
-	 *
-	 * @since 1.0.0
-	 */
-	public function check_post_per_page( $posts_per_page ) {
-		$posts_per_page = (int) $posts_per_page;
-		if ( ! empty( $posts_per_page ) ) {
-			return $posts_per_page;
-		}
-		$this->errors[] = $posts_per_page . ' is not a valid value for posts per page parameter';
-
-		return '';
-	}
-
-	/**
-	 * Fetches the oldest 5 posts.
+	 * Creates a new wp query and call the template to show the posts.
 	 *
 	 * @since 1.0.0
 	 * @param array $attributes attribute passed while calling shortcode.
@@ -368,7 +374,7 @@ class Custom_Shortcode {
 		}
 	}
 	/**
-	 * Adds the custom css file name style.css.
+	 * If there are any errors in the code, this function is used to display that errors.
 	 *
 	 * @since 1.0.0
 	 */
@@ -380,7 +386,7 @@ class Custom_Shortcode {
 		}
 	}
 	/**
-	 * Adds the custom css file name style.css.
+	 * Enqueue all the custom css and js scripts to the plugin.
 	 *
 	 * @since 1.0.0
 	 */

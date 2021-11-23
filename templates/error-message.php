@@ -10,6 +10,6 @@
 
 
 ?>
-<i><span class="dashicons dashicons-warning"></span></i>
-<p><?php echo esc_html( $error ); ?></p>
+
+<p class="error"><i><span class="dashicons dashicons-warning"></span></i><?php echo esc_html( $error ); ?></p>
 

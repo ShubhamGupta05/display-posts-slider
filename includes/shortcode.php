@@ -49,20 +49,21 @@ class Custom_Shortcode {
 			'author_name'          => 'shubham',
 			'post_status'          => 'publish',
 			'order'                => 'DESC',
-			'orderby'              => 'rand',
-			'date_query_after'     => 'September 1st, 2021',
-			'date_query_before'    => 'September 30th, 2021',
-			'date_query_inclusive' => 'true',
-			's'                    => 'this',
-			'category_name'        => 'mypost',
-			'category__not_in'     => 'uncategorized id',
-			'tag'                  => 'action',
-			'tag__not_in'          => 'drama id',
+			'orderby'              => '',
+			'date_query_after'     => '',
+			'date_query_before'    => '',
+			'date_query_inclusive' => '',
+			's'                    => '',
+			'category_name'        => '',
+			'category__not_in'     => '',
+			'tag'                  => '',
+			'tag__not_in'          => '',
 		);
 		// declaring $args variable and assigning the values to the properties.
 		$attributes = shortcode_atts( $default_attributes, $atts );
+		print_r( $attributes );
 		foreach ( $attributes as $atts_key => $value ) {
-			$method = 'check_$atts_key';
+			$method = "check_$atts_key";
 			$this->$method( $value );
 		}
 		print_r( $attributes );
@@ -75,7 +76,7 @@ class Custom_Shortcode {
 	 * @since 1.0.0
 	 * @param array $posts_per_page attribute passed while calling this function.
 	 */
-	public function check_post_per_page( $posts_per_page ) {
+	public function check_posts_per_page( $posts_per_page ) {
 		$posts_per_page = (int) $posts_per_page;
 		if ( ! empty( $posts_per_page ) ) {
 			return $posts_per_page;
@@ -119,8 +120,10 @@ class Custom_Shortcode {
 			return '';
 		}
 		$author_name_list = get_users();
-		if ( in_array( $author_name, $author_name_list ) ) {
-			return $author_name;
+		foreach ( $author_name_list as $author ) {
+			if ( $author->display_name == $author_name ) {
+				return $author_name;
+			}
 		}
 		$this->errors[] = $author_name . ' is not a valid author name';
 

@@ -388,7 +388,7 @@ class Custom_Shortcode {
 
 		// passing parameters to  wp_register_style function.
 		wp_enqueue_style(
-			'cs_style',
+			'style',
 			DPS_URL . 'assets/css/style.css',
 			array(),
 			DPS_VERSION,
@@ -402,8 +402,8 @@ class Custom_Shortcode {
 			'all'
 		);
 		wp_enqueue_script(
-			'cs_script',
-			DPS_URL . 'assets/js/display-posts-slider.js',
+			'dps',
+			DPS_URL . 'assets/js/dps.js',
 			array( 'jdslider' ),
 			DPS_VERSION,
 			'all'

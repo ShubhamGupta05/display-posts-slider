@@ -395,16 +395,16 @@ class Custom_Shortcode {
 			'all'
 		);
 		wp_enqueue_script(
-			'js_script',
+			'jdslider',
 			DPS_URL . 'assets/js/jquery.jdSlider-latest.min.js',
-			array(),
+			array( 'jquery' ),
 			DPS_VERSION,
 			'all'
 		);
 		wp_enqueue_script(
 			'cs_script',
-			DPS_URL . 'assets/js/custom-shortcode.js',
-			array( 'jquery' ),
+			DPS_URL . 'assets/js/display-posts-slider.js',
+			array( 'jdslider' ),
 			DPS_VERSION,
 			'all'
 		);

@@ -47,7 +47,7 @@ class Custom_Shortcode {
 			'posts_per_page'       => 5,
 			'post_type'            => 'post',
 			'author_name'          => 'shubham',
-			'post_status'          => 'publish',
+			'post_status'          => 'Published',
 			'order'                => 'DESC',
 			'orderby'              => '',
 			'date_query_after'     => '',
@@ -61,12 +61,10 @@ class Custom_Shortcode {
 		);
 		// declaring $args variable and assigning the values to the properties.
 		$attributes = shortcode_atts( $default_attributes, $atts );
-		print_r( $attributes );
 		foreach ( $attributes as $atts_key => $value ) {
 			$method = "check_$atts_key";
 			$this->$method( $value );
 		}
-		print_r( $attributes );
 		$this->new_query( $attributes );
 	}
 
@@ -99,8 +97,10 @@ class Custom_Shortcode {
 			return '';
 		}
 		$register_post_types = get_post_types();
-		if ( in_array( $post_type, $registered_post_types ) ) {
-			return $post_type;
+		foreach ( $register_post_types as $type ) {
+			if ( $type == $post_type ) {
+				return $post_type;
+			}
 		}
 
 		$this->errors[] = $post_type . ' is not a valid post type';
@@ -141,8 +141,10 @@ class Custom_Shortcode {
 			return '';
 		}
 		$poststatus_list = get_post_statuses();
-		if ( in_array( $post_status, $poststatus_list ) ) {
-			return $post_status;
+		foreach ( $poststatus_list as $status ) {
+			if ( $status == $post_status ) {
+				return $post_status;
+			}
 		}
 		$this->errors[] = $post_status . ' is not a valid  post status';
 
@@ -383,7 +385,6 @@ class Custom_Shortcode {
 	 */
 	public function display_errors() {
 		// Loops to get post from $old_post.
-
 		foreach ( $this->errors as $error ) {
 			include DPS_PATH . 'templates/error-message.php';
 		}

@@ -368,15 +368,13 @@ class Custom_Shortcode {
 			$this->display_errors();
 		}
 
-		// Loops to get post from $old_post.
-		foreach ( $oldest_posts_query->posts as $old_post ) {
 			/**
 			 * Includes the template file.
 			 *
 			 * @since 1.0.0
 			 */
 			include DPS_PATH . 'templates/display-posts-slider.php';
-		}
+
 	}
 	/**
 	 * If there are any errors in the code, this function is used to display that errors.
@@ -409,14 +407,14 @@ class Custom_Shortcode {
 			DPS_URL . 'assets/js/jquery.jdSlider-latest.min.js',
 			array( 'jquery' ),
 			DPS_VERSION,
-			'all'
+			true
 		);
 		wp_enqueue_script(
 			'dps',
 			DPS_URL . 'assets/js/dps.js',
 			array( 'jdslider' ),
 			DPS_VERSION,
-			'all'
+			true
 		);
 	}
 }

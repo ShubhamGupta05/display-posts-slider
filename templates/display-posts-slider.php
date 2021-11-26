@@ -9,9 +9,31 @@
  */
 
 ?>
-<article class='dps_post_template'>
-	<img class='dps_post_thumbnail' src="<?php echo esc_html( get_the_post_thumbnail_url( $old_post, 'medium' ) ); ?>"/>
-	<h2 class='dps_post_title'><?php echo esc_html( $old_post->post_title ); ?></h2>
-	<p class='dps_post_content'><?php echo esc_html( $old_post->post_excerpt ); ?></p>
-	<a class='dps_post_url' href="<?php echo esc_html( get_permalink( $old_post->ID ) ); ?>" title="Read More">Read More</a>
-</article>
+<div class="dps-container"> 
+  <div class="slide-inner"> 
+		<ul class="slide-area">
+			<?php
+			foreach ( $oldest_posts_query->posts as $old_post ) {
+				/**
+				 * Includes the template file.
+				 *
+				 * @since 1.0.0
+				 */
+				include DPS_PATH . 'templates/display-posts.php';
+			}
+			?>
+		</ul>
+		<a class="prev" href="#">&larr;<a>
+		<a class="next" href="#">&rarr;</a>
+	  </div>
+	  <div class="controller">
+	<a class="auto" href="#"></a> 
+	<div class="indicate-area"> 
+	  <a href="#">1</a>
+	  <a href="#">2</a>
+	  <a href="#">3</a>
+	  <a href="#">4</a>
+	  <a href="#">5</a>
+	</div>
+   </div>
+</div>

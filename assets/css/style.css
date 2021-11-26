@@ -22,3 +22,42 @@
 .error{
   color: red;
 }
+
+.dps-container .slide-area {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+
+.dps-container .slide-area li {
+display: none;
+float: left;
+width: 100%;
+}
+.dps-container .slide-area li:first-child {
+display: block;
+}
+
+.dps-container.fade .slide-area li {
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
+-webkit-transform: translateZ(0);
+transform: translateZ(0);
+width:640px;
+height:480px;
+background:#ccc;
+}
+.dps-container.fade .slide-area li:first-child {
+position: static;
+opacity: 1;
+}
+
+.dps-container.slider--none .prev, .slider.slider--none .next, .slider.slider--none .controller {
+display: none;
+}

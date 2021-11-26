@@ -1,4 +1,4 @@
-$(' .dps-container ').jdSlider({
+jQuery(' .dps-container ').jdSlider({
         slideShow: 1,
         slideToScroll: 1,
         isAuto: true,

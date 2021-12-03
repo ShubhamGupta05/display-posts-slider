@@ -40,7 +40,7 @@ Allows you to fetch posts from the database on the basis of the parameters you p
 
 # Parameter
 
-List of the parameters that can be passed while calling the shortcode:
+List of the parameters that can be passed while calling the shortcode to select the type of posts you want to display in slider:
 
 1. posts_per_page ( Pass the number of posts you want to display. Maximum limit is set to 100)<br>
     (Optional)(Number)<br>
@@ -119,8 +119,18 @@ List of the parameters that can be passed while calling the shortcode:
     Example:- [display-posts-slider post_mime_type = 'array('jpg','png','gif')']
 
 
+List of the parameters that can be passed while calling the shortcode to select the options you want to display in your slider:
 
-
+1. slideShow ( Will set the number of slides to be display on screen ).
+2. slideToScroll (Will set the number of slides you can scroll in one click).
+3. speed ( Will help you to set the sliding speed 1000 = 1 second)
+4. isAuto ( Will help you to set the autoplay setting) (Value will be true or false)
+5. isLoop ( Will help you to set the infinite loop to the slider)(Value will be true or false)
+6. prev ( Will help you to select the previous button selector )
+7. next ( will help you to select the next button selector )
+8. auto ( Will help you to set the autoplay button selector )
+9. playClass (Will set play class on autoplay button )
+10. pauseClass ( Will set the pause class on autoplay button)
 
 
 # Warning 

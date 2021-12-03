@@ -368,12 +368,12 @@ class Custom_Shortcode {
 			$this->display_errors();
 		}
 
-			/**
-			 * Includes the template file.
-			 *
-			 * @since 1.0.0
-			 */
-			include DPS_PATH . 'templates/display-posts-slider.php';
+		/**
+		 * Includes the template file.
+		 *
+		 * @since 1.0.0
+		 */
+		include DPS_PATH . 'templates/display-posts-slider.php';
 
 	}
 	/**

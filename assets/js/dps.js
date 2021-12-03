@@ -1,6 +1,6 @@
 jQuery(' .dps-container ').jdSlider({
-        slideShow: 1,
+    slideShow: 1,
         slideToScroll: 1,
-        isAuto: true,
-        isLoop: true,
+        isAuto: false,
+        isLoop: false,
 });

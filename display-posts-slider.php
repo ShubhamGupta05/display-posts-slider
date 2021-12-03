@@ -50,4 +50,4 @@ define( 'DPS_VERSION', '1.0.0' );
  *
  * @since 1.0.0
  */
-require_once DPS_PATH . 'includes/shortcode.php';
+require_once DPS_PATH . 'includes/class-display-posts.php';

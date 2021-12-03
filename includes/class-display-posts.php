@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-class Custom_Shortcode {
+class Display_Posts {
 	/**
 	 * Error variable error that will contain all the errors while validating the parameters.
 	 *
@@ -419,6 +419,6 @@ class Custom_Shortcode {
 	}
 }
 
-$shortcode = new Custom_Shortcode();
+$shortcode = new Display_Posts();
 $shortcode->init();
 

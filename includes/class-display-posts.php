@@ -30,7 +30,11 @@ class Display_Posts {
 	 */
 	public function init() {
 		// adds the custom shortcode.
-		add_shortcode( 'display-posts-slider', array( $this, 'get_posts' ) );
+		register_block_type(
+			'dps_block',
+			array( 'render_callback' => 'get_posts()' )
+		 );
+		//	add_shortcode( 'display-posts-slider', array( $this, 'get_posts' ) );
 
 		// adds the custom stylesheet.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom' ) );

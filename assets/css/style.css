@@ -2,6 +2,7 @@
   background: green;
   position: relative;
   overflow: auto;
+  width: 100%;
 }
 
 .dps_post_thumbnail{
@@ -22,6 +23,13 @@
   color: red;
 }
 
+.dps-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
 .dps-container .slide-area {
   width: 100%;
   margin: 0;
@@ -29,7 +37,6 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-
 
 .dps-container .slide-area li {
 display: none;

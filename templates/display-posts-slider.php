@@ -13,9 +13,7 @@
   <div class="slide-inner"> 
 		<ul class="slide-area">
 			<?php
-			print_r( 'Hello World' );
 			foreach ( $oldest_posts_query->posts as $old_post ) {
-				print_r( 'hello posts' );
 				/**
 				 * Includes the template file.
 				 *
@@ -23,7 +21,6 @@
 				 */
 				include DPS_PATH . 'templates/display-posts.php';
 			}
-			print_r( 'Hello World1' );
 			?>
 			
 		</ul>

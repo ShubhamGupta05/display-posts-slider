@@ -50,7 +50,7 @@ class Display_Posts {
 		$default_attributes = array(
 			'posts_per_page'       => 5,
 			'post_type'            => 'post',
-			'author_name'          => 'shubham',
+			'author_name'          => '',
 			'post_status'          => 'Published',
 			'order'                => 'DESC',
 			'orderby'              => '',

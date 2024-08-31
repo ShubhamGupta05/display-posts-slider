@@ -67,3 +67,7 @@ opacity: 1;
 .dps-container.slider--none .prev, .slider.slider--none .next, .slider.slider--none .controller {
 display: none;
 }
+
+ul.slide-area{
+  display: flex;
+}
